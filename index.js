@@ -3,6 +3,11 @@ const app = require('fastify')({
     logger: true
 })
 
+// hooks
+app.addHook('onRoute', (routeOptions) => {
+    console.log(`Registered route: ${routeOptions.url}`)
+})
+
 // Declare a route
 app.get('/', function (req, reply) {
     reply.send({ hello: 'world' })
